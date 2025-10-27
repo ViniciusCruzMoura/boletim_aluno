@@ -1,0 +1,10 @@
+<app-selection (selectionChanged)="onSelection($event)"></app-selection>
+
+<div *ngIf="selected; else placeholder">
+  <app-grade [turmaId]="selected.turmaId" [disciplinaId]="selected.disciplinaId"></app-grade>
+</div>
+
+<ng-template #placeholder>
+  <p>Selecione turma e disciplina.</p>
+</ng-template>
+

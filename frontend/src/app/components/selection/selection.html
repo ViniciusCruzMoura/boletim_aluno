@@ -1,0 +1,18 @@
+<div class="selection">
+  <label>
+    Turma
+    <select [(ngModel)]="turmaId" (change)="onChange()">
+      <option [ngValue]="null">-- selecione --</option>
+      <option *ngFor="let t of turmas" [ngValue]="t.id">{{t.nome}}</option>
+    </select>
+  </label>
+
+  <label>
+    Disciplina
+    <select [(ngModel)]="disciplinaId" (change)="onChange()">
+      <option [ngValue]="null">-- selecione --</option>
+      <option *ngFor="let d of disciplinas" [ngValue]="d.id">{{d.nome}}</option>
+    </select>
+  </label>
+</div>
+
