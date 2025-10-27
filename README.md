@@ -4,6 +4,9 @@ Backend em Spring Boot (MVC, Spring Data JPA, H2) e frontend em Angular 20.
 
 - Swagger: http://localhost:8080/swagger-ui/index.html
 
+![](./img1.png)
+![](./img2.png)
+
 ## Sumário
 - Pré-requisitos
 - Como executar
