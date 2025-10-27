@@ -5,14 +5,25 @@ import { Turma, Disciplina } from '../../models/models';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 @Component({
   selector: 'app-selection',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule,
+      MatSelectModule,
+      MatFormFieldModule,
+      MatProgressSpinnerModule
+  ],
   templateUrl: './selection.html',
   styleUrl: './selection.scss',
 })
 export class Selection implements OnInit {
+
+    loading: boolean = false;
+    errorMsg: string = '';
 
     turmas: Turma[] = [];
     disciplinas: Disciplina[] = [];

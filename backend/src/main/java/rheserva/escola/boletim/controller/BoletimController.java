@@ -99,7 +99,7 @@ public class BoletimController {
 
         for (AvaliacaoLancamento l : lancamentos) {
             mapa.computeIfAbsent(l.getAluno().getId(), k -> new HashMap<>())
-                    .put(l.getAvaliacao().getId(), l.getNota());
+                    .put(l.getAvaliacao().getId(), Math.round(l.getNota() * 10.0) / 10.0);
         }
 
 //         List<AlunoNotasDTO> linhas = alunos.stream().map(a -> {

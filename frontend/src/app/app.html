@@ -1,10 +1,22 @@
 <app-selection (selectionChanged)="onSelection($event)"></app-selection>
 
-<div *ngIf="selected; else placeholder">
-  <app-grade [turmaId]="selected.turmaId" [disciplinaId]="selected.disciplinaId"></app-grade>
-</div>
+<mat-card *ngIf="selected; else placeholder">
+  <mat-card-content>
+    <app-grade 
+      [turmaId]="selected.turmaId" 
+      [disciplinaId]="selected.disciplinaId"
+    ></app-grade>
+  </mat-card-content>
+</mat-card>
 
 <ng-template #placeholder>
-  <p>Selecione turma e disciplina.</p>
+  <mat-card>
+    <mat-card-content>
+      <div class="placeholder-content">
+        <mat-icon>school</mat-icon>
+        <p>Selecione turma e disciplina para visualizar notas</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </ng-template>
 

@@ -1,18 +1,25 @@
 <div class="selection">
-  <label>
-    Turma
-    <select [(ngModel)]="turmaId" (change)="onChange()">
-      <option [ngValue]="null">-- selecione --</option>
-      <option *ngFor="let t of turmas" [ngValue]="t.id">{{t.nome}}</option>
-    </select>
-  </label>
+  <mat-form-field>
+    <mat-label>Turma</mat-label>
+    <mat-select [(value)]="turmaId" (selectionChange)="onChange()">
+      <mat-option [value]="null">-- selecione --</mat-option>
+      <mat-option *ngFor="let t of turmas" [value]="t.id">
+        {{t.nome}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-  <label>
-    Disciplina
-    <select [(ngModel)]="disciplinaId" (change)="onChange()">
-      <option [ngValue]="null">-- selecione --</option>
-      <option *ngFor="let d of disciplinas" [ngValue]="d.id">{{d.nome}}</option>
-    </select>
-  </label>
+  <mat-form-field>
+    <mat-label>Disciplina</mat-label>
+    <mat-select [(value)]="disciplinaId" (selectionChange)="onChange()">
+      <mat-option [value]="null">-- selecione --</mat-option>
+      <mat-option *ngFor="let d of disciplinas" [value]="d.id">
+        {{d.nome}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>
+
+<mat-progress-spinner *ngIf="loading" mode="indeterminate"></mat-progress-spinner>
+<div *ngIf="errorMsg" class="error-message">{{errorMsg}}</div>
 

@@ -3,16 +3,30 @@ import { Api } from '../../services/api';
 import { Aluno, Avaliacao, Lancamento } from '../../models/models';
 import { CommonModule } from '@angular/common';
 
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 interface LancamentoLocal { alunoId: number; avaliacaoId: number; nota: number | null; }
 
 @Component({
     selector: 'app-grade',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule,
+        MatTableModule,
+        MatCardModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule
+    ],
     templateUrl: './grade.html',
     styleUrl: './grade.scss',
 })
 export class Grade implements OnChanges {
+    displayedColumns: string[] = ['aluno'];
+
     @Input() turmaId?: number;
     @Input() disciplinaId?: number;
 
@@ -62,6 +76,16 @@ export class Grade implements OnChanges {
             this.avaliacoes = avaliacoes!;
             this.initNotas();
             this.loading = false;
+
+            this.displayedColumns = ['aluno'];
+
+        // Add columns for each avaliacao
+        this.avaliacoes.forEach(a => {
+            this.displayedColumns.push('avaliacao_' + a.id);
+        });
+
+        // Add 'media' at the end
+        this.displayedColumns.push('media');
         }).catch(err => {
             this.errorMsg = 'Erro ao carregar dados';
             this.loading = false;
@@ -139,7 +163,7 @@ export class Grade implements OnChanges {
 
         this.loading = true;
         this.api.postLancamentos(this.turmaId, this.disciplinaId, payload).subscribe({
-            next: () => { this.loading = false; this.errorMsg = ''; alert('Lançamentos salvos com sucesso'); },
+            next: () => { this.loading = false; this.errorMsg = ''; /*alert('Lançamentos salvos com sucesso');*/ },
                 error: () => { this.loading = false; this.errorMsg = 'Erro ao salvar lançamentos'; }
         });
     }

@@ -1,0 +1,20 @@
+.selection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.info-message {
+  color: rgba(0, 0, 0, 0.6);
+  margin: 16px 0;
+}
+
+.error-message {
+  color: red;
+  margin: 16px 0;
+}
+
