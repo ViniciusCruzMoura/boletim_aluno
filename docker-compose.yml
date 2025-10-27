@@ -1,0 +1,13 @@
+services:
+  frontend:
+    image: boletim_back:latest
+    build:
+      context: frontend
+      dockerfile: ./Dockerfile
+    network_mode: host
+  backend:
+    image: boletim_front:latest
+    build:
+      context: backend
+      dockerfile: ./Dockerfile
+    network_mode: host
