@@ -162,6 +162,10 @@ Testes
   cd frontend
   npx ng serve --open
   ```
+- Rodar docker:
+  ```bash
+  docker compose up
+  ```
 - h2 console
   ```bash
   Path: http://localhost:8080/h2-console/
